@@ -1,0 +1,52 @@
+/* خلفية الجزيئات المتناثرة المتحركة بالـ CSS فقط */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background:
+    /* طبقات جزيئات بأحجام ومواقع مختلفة */
+    radial-gradient(circle at 15% 15%, var(--particle-color) 1px, transparent 1.5px),
+    radial-gradient(circle at 80% 30%, var(--particle-color) 1.5px, transparent 2px),
+    radial-gradient(circle at 30% 70%, var(--particle-color) 0.8px, transparent 1.3px),
+    radial-gradient(circle at 90% 90%, var(--particle-color) 2px, transparent 2.5px),
+    radial-gradient(circle at 40% 50%, var(--particle-color) 1.2px, transparent 1.7px),
+    radial-gradient(circle at 10% 85%, var(--particle-color) 1.8px, transparent 2.3px),
+    radial-gradient(circle at 65% 10%, var(--particle-color) 1px, transparent 1.5px),
+    radial-gradient(circle at 20% 40%, var(--particle-color) 2.2px, transparent 2.7px),
+    radial-gradient(circle at 75% 60%, var(--particle-color) 0.9px, transparent 1.4px),
+    radial-gradient(circle at 50% 25%, var(--particle-color) 1.6px, transparent 2.1px),
+    radial-gradient(circle at 95% 55%, var(--particle-color) 1.3px, transparent 1.8px),
+    radial-gradient(circle at 5% 45%, var(--particle-color) 2.5px, transparent 3px),
+    radial-gradient(circle at 88% 70%, var(--particle-color) 1.1px, transparent 1.6px),
+    radial-gradient(circle at 35% 5%, var(--particle-color) 1.9px, transparent 2.4px),
+    radial-gradient(circle at 60% 85%, var(--particle-color) 0.7px, transparent 1.2px),
+    radial-gradient(circle at 22% 65%, var(--particle-color) 1.4px, transparent 1.9px),
+    radial-gradient(circle at 92% 20%, var(--particle-color) 2.1px, transparent 2.6px),
+    radial-gradient(circle at 45% 95%, var(--particle-color) 0.6px, transparent 1.1px),
+    radial-gradient(circle at 12% 50%, var(--particle-color) 2.3px, transparent 2.8px),
+    radial-gradient(circle at 70% 45%, var(--particle-color) 1.7px, transparent 2.2px);
+
+  background-size: 150px 150px;
+  background-position: 0 0, 20px 10px, 50px 80px, 10px 60px, 70px 20px, 35px 90px, 90px 40px, 60px 70px, 5px 30px, 80px 5px, 25px 55px, 45px 15px, 75px 85px, 55px 35px, 15px 75px, 85px 25px, 30px 65px, 65px 95px, 95px 5px, 5px 95px; /* مواقع ابتدائية عشوائية */
+  animation: particles-move-random 35s linear infinite;
+  opacity: 0.95;
+  box-shadow: inset 0 0 100px var(--particle-glow);
+}
+
+.home-hero::after {
+  content: none;
+}
+
+/* تعديل حركة الجزيئات لتكون أكثر عشوائية */
+@keyframes particles-move-random {
+  0% {
+    background-position: 0 0, 20px 10px, 50px 80px, 10px 60px, 70px 20px, 35px 90px, 90px 40px, 60px 70px, 5px 30px, 80px 5px, 25px 55px, 45px 15px, 75px 85px, 55px 35px, 15px 75px, 85px 25px, 30px 65px, 65px 95px, 95px 5px, 5px 95px;
+  }
+  100% {
+    background-position: 150px 150px, 0px 0px, 0px 0px, 160px 90px, 0px 100px, 115px 0px, 0px 110px, 0px 80px, 145px 120px, 70px 150px, 175px 95px, 135px 135px, 0px 35px, 95px 165px, 135px 75px, 65px 175px, 180px 85px, 75px 5px, 30px 45px, 155px 65px; /* تحريك كل طبقة بشكل مختلف */
+  }
+}

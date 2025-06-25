@@ -1,0 +1,551 @@
+/* 1. المتغيرات العامة (يجب أن تكون معرفة في ملف CSS عام مثل App.css أو Index.css) */
+/* للتذكير، هذه هي المتغيرات التي نستخدمها */
+:root {
+    /* ألوان الظلام */
+    --dark-primary: #1a1a1a;
+    --dark-secondary: #2c2c2c;
+    --dark-tertiary: #202020;
+    --text-dark: #b0b0b0;
+    --border-dark: #444;
+
+    /* ألوان النور / التميز */
+    --light-primary: #f5f5f5;
+    --text-light: #333333;
+    --white-pure: #FFFFFF;
+    --accent-gold: #FFD700;
+    --accent-secondary-gold: #DAA520;
+
+    /* تأثيرات الظلال والتوهج الخفيفة */
+    --shadow-dark: 0 5px 20px rgba(0, 0, 0, 0.6);
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --glow-effect: 0 0 15px var(--accent-gold), 0 0 25px var(--accent-gold), 0 0 35px var(--accent-gold);
+    --secondary-glow-effect: 0 0 10px var(--accent-secondary-gold), 0 0 20px var(--accent-secondary-gold);
+
+    /* الانتقالات والحركات السلسة */
+    --transition-fast: 0.3s ease-in-out;
+    --transition-medium: 0.5s ease-in-out;
+}
+
+/* 2. تنسيق رأس صفحة من نحن (Header) */
+.about-header {
+    background-color: var(--dark-primary); /* استخدام اللون الأساسي الداكن */
+    color: var(--text-dark); /* نص رمادي فاتح */
+    padding: 120px 0 60px; /* تم تعديل البادينغ ليتناسق مع الخدمات والتواصل */
+    text-align: center;
+    border-bottom: 1px solid var(--border-dark); /* حدود داكنة */
+}
+
+.about-header h1 {
+    font-size: 3.5rem; /* تم تعديل الحجم ليتناسق مع الصفحات الأخرى */
+    margin-bottom: 15px; /* تم تعديل الهامش */
+    color: var(--accent-gold); /* ذهبي نقي */
+    text-shadow: var(--glow-effect); /* توهج ذهبي */
+}
+
+.about-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.15rem; /* تم تعديل الحجم ليتناسق مع الصفحات الأخرى */
+    line-height: 1.6;
+    color: var(--text-dark); /* نص رمادي فاتح */
+}
+
+/* 3. تنسيق قسم القصة (About Story) */
+.about-story {
+    padding: 80px 0;
+    background-color: var(--dark-secondary); /* خلفية ثانوية أغمق قليلاً */
+    color: var(--text-dark); /* نص رمادي فاتح */
+}
+
+.about-story .section-title { /* افتراض وجود عنوان قسم مركزي */
+    font-size: 2.5rem;
+    color: var(--white-pure);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.about-story .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    border-radius: 1px;
+}
+
+
+.about-story-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 50px; /* هامش علوي بعد العنوان */
+}
+
+.about-story-text {
+    flex: 1;
+    line-height: 1.8;
+}
+
+.about-story-text h2 {
+    font-size: 2.2rem;
+    color: var(--white-pure);
+    margin-bottom: 20px;
+}
+
+.about-story-text p {
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.about-story-image {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-dark); /* ظل داكن */
+    border: 1px solid var(--border-dark); /* حدود داكنة */
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.about-story-image:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    border-color: var(--accent-gold); /* حدود ذهبية عند التحويم */
+}
+
+.about-story-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(85%) contrast(110%); /* تحسين الصورة لتناسب الثيم الداكن */
+}
+
+/* 4. تنسيق قسم الرؤية والرسالة (Vision Mission) */
+.vision-mission {
+    padding: 80px 0;
+    background-color: var(--dark-primary); /* خلفية رئيسية داكنة */
+    color: var(--text-dark);
+    border-top: 1px solid var(--border-dark);
+}
+
+.vision-mission .section-title { /* افتراض وجود عنوان قسم مركزي */
+    font-size: 2.5rem;
+    color: var(--white-pure);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.vision-mission .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    border-radius: 1px;
+}
+
+
+.vision-mission-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px; /* هامش علوي بعد العنوان */
+}
+
+.vision-card, .mission-card {
+    background-color: var(--dark-secondary); /* خلفية ثانوية أغمق قليلاً */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-dark); /* ظل داكن */
+    border: 1px solid var(--border-dark); /* حدود داكنة */
+    text-align: center;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.vision-card:hover, .mission-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    border-color: var(--accent-gold); /* حدود ذهبية عند التحويم */
+}
+
+.vision-icon, .mission-icon {
+    font-size: 3.5rem; /* حجم أكبر للأيقونات */
+    color: var(--accent-gold); /* أيقونات ذهبية */
+    margin-bottom: 25px; /* هامش أكبر */
+    text-shadow: var(--secondary-glow-effect); /* توهج ذهبي خفيف */
+}
+
+.vision-card h3, .mission-card h3 {
+    font-size: 1.8rem; /* حجم أكبر للعناوين */
+    color: var(--white-pure); /* أبيض نقي */
+    margin-bottom: 15px;
+}
+
+.vision-card p, .mission-card p {
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+/* 5. تنسيق قسم القيم (Values Section) */
+.values-section {
+    padding: 80px 0;
+    background-color: var(--dark-secondary); /* خلفية ثانوية أغمق قليلاً */
+    color: var(--text-dark);
+    border-top: 1px solid var(--border-dark);
+}
+
+.values-section .section-title { /* افتراض وجود عنوان قسم مركزي */
+    font-size: 2.5rem;
+    color: var(--white-pure);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.values-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    border-radius: 1px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* شبكة مرنة للقيم */
+    gap: 30px;
+    margin-top: 50px; /* هامش علوي بعد العنوان */
+}
+
+.value-card {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--dark-tertiary); /* لون أعمق قليلاً للخلفية */
+    border-radius: 10px;
+    box-shadow: var(--shadow-dark); /* ظل داكن */
+    border: 1px solid var(--border-dark); /* حدود داكنة */
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    border-color: var(--accent-gold); /* حدود ذهبية عند التحويم */
+}
+
+.value-icon {
+    font-size: 2.8rem; /* حجم أكبر للأيقونة */
+    color: var(--accent-gold); /* أيقونات ذهبية */
+    margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px; /* لتوسيط الأيقونة عمودياً */
+    border-radius: 50%;
+    background-color: rgba(255, 215, 0, 0.15); /* خلفية ذهبية شفافة */
+    margin: 0 auto 20px;
+    box-shadow: var(--shadow-dark); /* ظل داكن */
+    border: 1px solid var(--accent-secondary-gold); /* حدود ذهبية ثانوية */
+    transition: all var(--transition-fast);
+}
+
+.value-card:hover .value-icon {
+    background-color: var(--accent-gold); /* خلفية ذهبية كاملة عند التحويم */
+    color: var(--text-light); /* نص داكن */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); /* توهج أكبر عند التحويم */
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    color: var(--white-pure); /* أبيض نقي */
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* 6. تنسيق قسم الفريق (Team Section) */
+.team-section {
+    padding: 80px 0;
+    background-color: var(--dark-primary); /* خلفية رئيسية داكنة */
+    color: var(--text-dark);
+    border-top: 1px solid var(--border-dark);
+}
+
+.team-section .section-title { /* افتراض وجود عنوان قسم مركزي */
+    font-size: 2.5rem;
+    color: var(--white-pure);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.team-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    border-radius: 1px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* شبكة مرنة لأعضاء الفريق */
+    gap: 30px;
+    margin-top: 50px; /* هامش علوي بعد العنوان */
+}
+
+.team-member {
+    text-align: center;
+    background-color: var(--dark-secondary); /* خلفية ثانوية أغمق قليلاً */
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-dark); /* ظل داكن */
+    border: 1px solid var(--border-dark); /* حدود داكنة */
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    border-color: var(--accent-gold); /* حدود ذهبية عند التحويم */
+}
+
+.team-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 0 5px var(--accent-gold), var(--shadow-dark); /* حلقة ذهبية حول الصورة وظل */
+    border: 3px solid var(--accent-secondary-gold); /* حدود ذهبية ثانوية */
+    transition: all var(--transition-fast);
+}
+
+.team-member:hover .team-image {
+    box-shadow: 0 0 0 5px var(--accent-gold), 0 0 20px rgba(255, 215, 0, 0.7), var(--shadow-dark); /* توهج أكبر عند التحويم */
+    transform: scale(1.05);
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) brightness(90%) contrast(110%); /* لتقليل تشبع الألوان لتناسب الثيم الداكن */
+    transition: filter var(--transition-fast);
+}
+
+.team-member:hover .team-image img {
+    filter: grayscale(0%) brightness(100%) contrast(100%); /* إزالة الفلتر عند التحويم */
+}
+
+
+.team-name {
+    font-size: 1.6rem; /* حجم أكبر للاسم */
+    margin-bottom: 5px;
+    color: var(--white-pure); /* أبيض نقي */
+}
+
+.team-position {
+    color: var(--text-dark); /* رمادي فاتح */
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.team-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* تباعد أكبر بين الأيقونات */
+    margin-top: 20px;
+}
+
+.team-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* حجم أكبر */
+    height: 40px; /* حجم أكبر */
+    border-radius: 50%;
+    background-color: var(--dark-tertiary); /* خلفية داكنة */
+    color: var(--accent-gold); /* لون ذهبي */
+    font-size: 1.2rem; /* حجم الأيقونة */
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+}
+
+.team-social a:hover {
+    background-color: var(--accent-gold); /* خلفية ذهبية عند التحويم */
+    color: var(--text-light); /* نص داكن */
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    border-color: var(--accent-secondary-gold);
+}
+
+/* 7. التجاوبية (Media Queries) */
+@media (max-width: 992px) {
+    .about-story-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .vision-mission-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-story-text {
+        text-align: center; /* توسيط النص في الشاشات الصغيرة */
+    }
+}
+
+@media (max-width: 768px) {
+    .about-header h1 {
+        font-size: 2.8rem;
+    }
+
+    .about-header p {
+        font-size: 1.05rem;
+    }
+
+    .about-story .section-title,
+    .vision-mission .section-title,
+    .values-section .section-title,
+    .team-section .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+
+    .about-story-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .about-story-image {
+        width: 80%; /* تصغير عرض الصورة في الشاشات الصغيرة */
+        margin: 0 auto; /* توسيط الصورة */
+    }
+
+    .vision-card, .mission-card, .value-card, .team-member {
+        padding: 30px;
+    }
+
+    .vision-icon, .mission-icon {
+        font-size: 3rem;
+    }
+
+    .vision-card h3, .mission-card h3 {
+        font-size: 1.6rem;
+    }
+
+    .value-icon {
+        font-size: 2.5rem;
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+    }
+
+    .value-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .team-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .team-name {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-header {
+        padding: 100px 0 50px;
+    }
+
+    .about-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .about-header p {
+        font-size: 0.95rem;
+    }
+
+    .about-story, .vision-mission, .values-section, .team-section {
+        padding: 50px 0;
+    }
+
+    .about-story .section-title,
+    .vision-mission .section-title,
+    .values-section .section-title,
+    .team-section .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .about-story-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .about-story-image {
+        width: 95%; /* زيادة عرض الصورة قليلاً في الشاشات الصغيرة جداً */
+    }
+
+    .vision-card, .mission-card, .value-card, .team-member {
+        padding: 25px;
+    }
+
+    .vision-icon, .mission-icon {
+        font-size: 2.5rem;
+    }
+
+    .vision-card h3, .mission-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .value-icon {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 2rem;
+    }
+
+    .value-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .team-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-name {
+        font-size: 1.2rem;
+    }
+
+    .team-social a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+    }
+}

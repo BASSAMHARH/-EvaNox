@@ -1,0 +1,1105 @@
+/* الألوان والمتغيرات الجديدة التي تعكس مفهوم "الظلام والنور" */
+:root {
+  /* ألوان الظلام */
+  --dark-primary: #1a1a1a; /* أسود حالك للخلفيات الرئيسية */
+  --dark-secondary: #2c2c2c; /* رمادي أغمق للعناصر الثانوية */
+  --text-dark: #b0b0b0; /* نص رمادي فاتح على الخلفيات الداكنة */
+  --border-dark: #444; /* حدود داكنة */
+
+  /* ألوان النور / التميز */
+  --light-primary: #f5f5f5; /* أبيض ناصع أو رمادي فاتح للخلفيات الفاتحة */
+  --text-light: #333333; /* نص داكن على الخلفيات الفاتحة */
+  --accent-gold: #FFD700; /* الذهبي للتوهج (سيظل يستخدم للخطوط والأيقونات) */
+  --accent-blue: #007bff; /* أزرق لبعض الومضات التقنية */
+  --faded-light-effect: rgba(255, 215, 0, 0.08); /* لون خافت جدا للنجوم */ /* **تم تقليل الشفافية أكثر** */
+
+
+  /* الشفافية والظلال */
+  --dark-overlay: rgba(0, 0, 0, 0.85); /* تراكب داكن قوي */
+  --light-overlay: rgba(255, 255, 255, 0.1); /* تراكب فاتح خفيف */
+  --shadow-dark: 0 5px 20px rgba(0, 0, 0, 0.6); /* ظل عميق للظلام */
+  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف للنور */
+  --glow-effect: 0 0 15px var(--accent-gold), 0 0 25px var(--accent-gold), 0 0 35px var(--accent-gold); /* تأثير توهج */
+
+  /* الانتقالات */
+  --transition-fast: 0.3s ease-in-out;
+  --transition-medium: 0.5s ease-in-out;
+  --transition-slow: 1s ease-in-out;
+
+  /* أحجام الخطوط والتخطيط (من الكود الأصلي، تأكد من توافقها مع Header.css) */
+  --sidebar-width-desktop: 150px;
+  --sidebar-width-mobile: 220px;
+  --sidebar-header-height: 100px;
+  --horizontal-nav-height: 60px;
+}
+
+/* تحديث بعض المتغيرات القديمة لتتوافق مع الجديدة (إذا كانت موجودة في ملفات CSS أخرى) */
+:root {
+  --primary-color: var(--accent-blue);
+  --primary-gold: var(--accent-gold);
+  --dark-color: var(--dark-primary);
+  --dark-black-transparent: var(--dark-overlay);
+  --light-gray: var(--light-primary);
+  --text-on-dark: var(--text-dark);
+  --text-on-gold: var(--text-light);
+  --white-pure: #FFFFFF;
+  --shadow-color-light: var(--shadow-light);
+  --shadow-color-strong: var(--shadow-dark);
+  --box-shadow: var(--shadow-light);
+}
+
+/* 1. قسم Home Hero (الواجهة الرئيسية) */
+.home-hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--dark-primary); /* خلفية داكنة جداً */
+  color: var(--text-dark);
+  position: relative;
+  overflow: hidden; /* ضروري جداً لإخفاء النجوم خارج الشاشة */
+}
+
+/* **تعديل جديد: خلفية النجوم المتحركة بالـ CSS فقط** */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* يجب أن يكون أقل من z-index لـ .hero-content */
+  background: transparent; /* الخلفية الأصلية شفافة لكي تظهر النجوم */
+}
+
+.home-hero::after { /* استخدام ::after لإنشاء "النجوم" */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px; /* حجم النقطة الواحدة */
+  height: 3px; /* حجم النقطة الواحدة */
+  background: transparent; /* لا نحتاج لخلفية لهذا العنصر */
+  border-radius: 50%; /* لجعلها دائرية */
+  box-shadow: /* هنا سنقوم بإنشاء العديد من النقاط العشوائية */
+    /* قم بتكرار هذا السطر لعدد أكبر من النجوم. هذه أمثلة فقط! */
+    200px 50px var(--faded-light-effect),
+    400px 150px var(--faded-light-effect),
+    600px 200px var(--faded-light-effect),
+    800px 100px var(--faded-light-effect),
+    1000px 300px var(--faded-light-effect),
+    1200px 50px var(--faded-light-effect),
+    1400px 250px var(--faded-light-effect),
+    1600px 100px var(--faded-light-effect),
+    50px 400px var(--faded-light-effect),
+    250px 500px var(--faded-light-effect),
+    450px 350px var(--faded-light-effect),
+    650px 450px var(--faded-light-effect),
+    850px 550px var(--faded-light-effect),
+    1050px 400px var(--faded-light-effect),
+    1250px 600px var(--faded-light-effect),
+    1450px 300px var(--faded-light-effect),
+    1650px 480px var(--faded-light-effect),
+    /* المزيد من النجوم، يمكنك إضافة المئات لملء الشاشة */
+    100px 700px var(--faded-light-effect),
+    300px 650px var(--faded-light-effect),
+    500px 750px var(--faded-light-effect),
+    700px 800px var(--faded-light-effect),
+    900px 720px var(--faded-light-effect),
+    1100px 850px var(--faded-light-effect),
+    1300px 700px var(--faded-light-effect),
+    1500px 900px var(--faded-light-effect),
+    1700px 750px var(--faded-light-effect),
+    180px 220px var(--faded-light-effect),
+    380px 120px var(--faded-light-effect),
+    580px 270px var(--faded-light-effect),
+    780px 80px var(--faded-light-effect),
+    980px 380px var(--faded-light-effect),
+    1180px 70px var(--faded-light-effect),
+    1380px 320px var(--faded-light-effect),
+    1580px 170px var(--faded-light-effect),
+    70px 450px var(--faded-light-effect),
+    270px 550px var(--faded-light-effect),
+    470px 400px var(--faded-light-effect),
+    670px 500px var(--faded-light-effect),
+    870px 600px var(--faded-light-effect),
+    1070px 450px var(--faded-light-effect),
+    1270px 650px var(--faded-light-effect),
+    1470px 350px var(--faded-light-effect),
+    1670px 530px var(--faded-light-effect);
+  
+  animation: starfield-move 150s linear infinite; /* حركة بطيئة جداً للنجوم */
+}
+
+@keyframes starfield-move {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100vh); } /* تتحرك النجوم للأعلى */
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* يجب أن يكون أعلى من z-index للخلفية */
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.company-name {
+  font-size: 5.5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  letter-spacing: 3px;
+  color: var(--white-pure);
+  text-shadow: var(--glow-effect);
+  position: relative;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px var(--accent-gold), 0 0 20px var(--accent-gold), 0 0 30px var(--accent-gold);
+  }
+  to {
+    text-shadow: 0 0 20px var(--accent-gold), 0 0 30px var(--accent-gold), 0 0 40px var(--accent-gold);
+  }
+}
+
+.tagline {
+  font-size: 1.6rem;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  opacity: 1;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  color: var(--text-dark);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* تأثير الخط الثاني الطويل */
+.tagline.fade-in:last-child {
+  font-family: 'Amiri', serif;
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--light-primary);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+
+.hero-buttons {
+  margin-top: 2rem;
+}
+
+.hero-buttons .btn {
+  margin: 0 10px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  font-weight: 700;
+  transition: var(--transition-fast);
+}
+
+.hero-buttons .btn-secondary {
+  background-color: var(--accent-gold);
+  color: var(--text-light);
+  border: 2px solid var(--accent-gold);
+  box-shadow: var(--shadow-light);
+}
+
+.hero-buttons .btn-secondary:hover {
+  background-color: transparent;
+  color: var(--accent-gold);
+  box-shadow: var(--glow-effect);
+}
+
+.hero-buttons .btn-outline {
+  background-color: transparent;
+  color: var(--white-pure);
+  border: 2px solid var(--white-pure);
+}
+
+.hero-buttons .btn-outline:hover {
+  background-color: var(--white-pure);
+  color: var(--dark-primary);
+  box-shadow: var(--shadow-light);
+}
+
+/* 2. قسم الخدمات (Services) - بدون تغيير */
+.services-section {
+  padding: 100px 0;
+  background-color: var(--light-primary);
+  color: var(--text-light);
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: var(--dark-primary);
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-gold);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.services-grid {
+  margin-top: 50px;
+}
+
+.service-card {
+  text-align: center;
+  padding: 30px;
+  background-color: var(--white-pure);
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-dark);
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 25px;
+}
+
+.service-card .card-title {
+  color: var(--dark-primary);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.service-card .card-text {
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.service-card .btn-outline {
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  margin-top: 20px;
+}
+
+.service-card .btn-outline:hover {
+  background-color: var(--accent-blue);
+  color: var(--white-pure);
+  box-shadow: var(--shadow-light);
+}
+
+/* 3. قسم من نحن (About) - بدون تغيير */
+.about-preview {
+  padding: 100px 0;
+  background-color: var(--dark-secondary);
+  color: var(--text-dark);
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text .section-title {
+  color: var(--white-pure);
+}
+
+.about-text p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-text .btn-primary {
+  background-color: var(--accent-gold);
+  color: var(--text-light);
+  border: 2px solid var(--accent-gold);
+  transition: var(--transition-fast);
+}
+.about-text .btn-primary:hover {
+  background-color: var(--white-pure);
+  color: var(--accent-gold);
+  box-shadow: var(--glow-effect);
+}
+
+.about-image {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-dark);
+  border: 3px solid var(--accent-gold);
+  transition: transform var(--transition-fast);
+}
+
+.about-image:hover {
+  transform: scale(1.02);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(20%);
+}
+
+/* 4. قسم معرض الأعمال (Portfolio) - بدون تغيير */
+.portfolio-preview {
+  padding: 100px 0;
+  background-color: var(--light-primary);
+  color: var(--text-light);
+}
+
+.portfolio-grid {
+  margin-top: 50px;
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: 300px;
+  box-shadow: var(--shadow-light);
+  transition: box-shadow var(--transition-fast);
+}
+
+.portfolio-item:hover {
+  box-shadow: var(--shadow-dark);
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.8);
+}
+
+.portfolio-item:hover .portfolio-image {
+  transform: scale(1.1);
+  filter: brightness(1);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, var(--dark-overlay), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: var(--white-pure);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-overlay h3 {
+  color: var(--white-pure);
+  margin-bottom: 5px;
+}
+
+.portfolio-overlay p {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+/* 5. قسم الدعوة للعمل (CTA Section) - بدون تغيير */
+.cta-section {
+  padding: 80px 0;
+  background-color: var(--dark-primary);
+  color: var(--white-pure);
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  color: var(--accent-gold);
+  text-shadow: var(--glow-effect);
+}
+
+.cta-text {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-dark);
+}
+
+.cta-section .btn-secondary {
+  background-color: var(--accent-gold);
+  color: var(--text-light);
+  border: 2px solid var(--accent-gold);
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-light);
+}
+
+.cta-section .btn-secondary:hover {
+  background-color: transparent;
+  color: var(--accent-gold);
+  box-shadow: var(--glow-effect);
+}
+
+/* 6. Media Queries (للتجاوبية) - بدون تغيير */
+@media (max-width: 992px) {
+  .company-name {
+    font-size: 4rem;
+  }
+  .tagline {
+    font-size: 1.4rem;
+  }
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .about-image {
+    width: 100%;
+  }
+  .cta-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-name {
+    font-size: 3rem;
+  }
+  .tagline {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero-btn {
+    margin: 0;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .services-section, .about-preview, .portfolio-preview, .cta-section {
+    padding: 60px 0;
+  }
+  .portfolio-item {
+    height: 250px;
+  }
+}
+
+/* 7. Grid system and General Utilities - بدون تغيير */
+.grid {
+  display: grid;
+  gap: 30px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* الألوان والمتغيرات الجديدة التي تعكس مفهوم "الظلام والنور" */
+:root {
+  /* ألوان الظلام */
+  --dark-primary: #1a1a1a; /* أسود حالك للخلفيات الرئيسية */
+  --dark-secondary: #2c2c2c; /* رمادي أغمق للعناصر الثانوية */
+  --text-dark: #b0b0b0; /* نص رمادي فاتح على الخلفيات الداكنة */
+  --border-dark: #444; /* حدود داكنة */
+
+  /* ألوان النور / التميز */
+  --light-primary: #f5f5f5; /* أبيض ناصع أو رمادي فاتح للخلفيات الفاتحة */
+  --text-light: #333333; /* نص داكن على الخلفيات الفاتحة */
+  --accent-gold: #FFD700; /* الذهبي للتوهج (سيظل يستخدم للخطوط والأيقونات) */
+  --accent-blue: #007bff; /* أزرق لبعض الومضات التقنية */
+  --particle-color: rgba(255, 255, 255, 0.08); /* **لون الجزيئات: أبيض خافت جداً** */
+  --particle-glow: rgba(255, 255, 255, 0.03); /* توهج خافت جداً للجزيئات الخلفية */
+
+
+  /* الشفافية والظلال */
+  --dark-overlay: rgba(0, 0, 0, 0.85); /* تراكب داكن قوي */
+  --light-overlay: rgba(255, 255, 255, 0.1); /* تراكب فاتح خفيف */
+  --shadow-dark: 0 5px 20px rgba(0, 0, 0, 0.6); /* ظل عميق للظلام */
+  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف للنور */
+  --glow-effect: 0 0 15px var(--accent-gold), 0 0 25px var(--accent-gold), 0 0 35px var(--accent-gold); /* تأثير توهج */
+
+  /* الانتقالات */
+  --transition-fast: 0.3s ease-in-out;
+  --transition-medium: 0.5s ease-in-out;
+  --transition-slow: 1s ease-in-out;
+
+  /* أحجام الخطوط والتخطيط (من الكود الأصلي، تأكد من توافقها مع Header.css) */
+  --sidebar-width-desktop: 150px;
+  --sidebar-width-mobile: 220px;
+  --sidebar-header-height: 100px;
+  --horizontal-nav-height: 60px;
+}
+
+/* تحديث بعض المتغيرات القديمة لتتوافق مع الجديدة (إذا كانت موجودة في ملفات CSS أخرى) */
+:root {
+  --primary-color: var(--accent-blue);
+  --primary-gold: var(--accent-gold);
+  --dark-color: var(--dark-primary);
+  --dark-black-transparent: var(--dark-overlay);
+  --light-gray: var(--light-primary);
+  --text-on-dark: var(--text-dark);
+  --text-on-gold: var(--text-light);
+  --white-pure: #FFFFFF;
+  --shadow-color-light: var(--shadow-light);
+  --shadow-color-strong: var(--shadow-dark);
+  --box-shadow: var(--shadow-light);
+}
+
+/* 1. قسم Home Hero (الواجهة الرئيسية) */
+.home-hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--dark-primary); /* خلفية داكنة جداً */
+  color: var(--text-dark);
+  position: relative;
+  overflow: hidden; /* ضروري جداً لإخفاء الأجزاء المتحركة الزائدة */
+}
+
+/* **تعديل جديد: خلفية الجزيئات المتناثرة المتحركة بالـ CSS فقط** */
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* يجب أن يكون أقل من z-index لـ .hero-content */
+  background: 
+    radial-gradient(circle at 10% 20%, var(--particle-color) 0.5px, transparent 1px),
+    radial-gradient(circle at 70% 80%, var(--particle-color) 0.5px, transparent 1px),
+    radial-gradient(circle at 30% 90%, var(--particle-color) 0.5px, transparent 1px),
+    radial-gradient(circle at 85% 40%, var(--particle-color) 0.5px, transparent 1px),
+    radial-gradient(circle at 50% 60%, var(--particle-color) 0.5px, transparent 1px),
+    radial-gradient(circle at 25% 10%, var(--particle-color) 0.5px, transparent 1px),
+    radial-gradient(circle at 95% 75%, var(--particle-color) 0.5px, transparent 1px),
+    radial-gradient(circle at 15% 55%, var(--particle-color) 0.5px, transparent 1px),
+    radial-gradient(circle at 60% 30%, var(--particle-color) 0.5px, transparent 1px);
+    /* **أضف المزيد من سطور radial-gradient هنا للحصول على كثافة أعلى من الجزيئات** */
+    /* يمكنك تكرار الأنماط مع تغيير المواقع (x% y%) لملء الخلفية. */
+
+  background-size: 200px 200px; /* حجم "النمط" الذي يتكرر. قلله لزيادة الكثافة */
+  background-position: 0 0;
+  animation: particles-move 120s linear infinite; /* حركة بطيئة جداً للجزيئات */
+  opacity: 0.9; /* لجعل تأثير الخلفية واضحًا لكن ليس طاغيًا */
+  box-shadow: inset 0 0 100px var(--particle-glow); /* توهج خفيف من الأطراف */
+}
+
+/* لا نحتاج لـ ::after هنا لأننا نستخدم ::before فقط */
+.home-hero::after {
+    content: none; /* تأكد من عدم وجود هذا العنصر إذا لم يكن مطلوباً */
+}
+
+
+/* رسوم متحركة جديدة للجزيئات */
+@keyframes particles-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; } /* تحريك بمقدار حجم الخلفية */
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* يجب أن يكون أعلى من z-index للخلفية */
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.company-name {
+  font-size: 5.5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  letter-spacing: 3px;
+  color: var(--white-pure);
+  text-shadow: var(--glow-effect);
+  position: relative;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px var(--accent-gold), 0 0 20px var(--accent-gold), 0 0 30px var(--accent-gold);
+  }
+  to {
+    text-shadow: 0 0 20px var(--accent-gold), 0 0 30px var(--accent-gold), 0 0 40px var(--accent-gold);
+  }
+}
+
+.tagline {
+  font-size: 1.6rem;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  opacity: 1;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  color: var(--text-dark);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* تأثير الخط الثاني الطويل */
+.tagline.fade-in:last-child {
+  font-family: 'Amiri', serif;
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--light-primary);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+
+.hero-buttons {
+  margin-top: 2rem;
+}
+
+.hero-buttons .btn {
+  margin: 0 10px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  font-weight: 700;
+  transition: var(--transition-fast);
+}
+
+.hero-buttons .btn-secondary {
+  background-color: var(--accent-gold);
+  color: var(--text-light);
+  border: 2px solid var(--accent-gold);
+  box-shadow: var(--shadow-light);
+}
+
+.hero-buttons .btn-secondary:hover {
+  background-color: transparent;
+  color: var(--accent-gold);
+  box-shadow: var(--glow-effect);
+}
+
+.hero-buttons .btn-outline {
+  background-color: transparent;
+  color: var(--white-pure);
+  border: 2px solid var(--white-pure);
+}
+
+.hero-buttons .btn-outline:hover {
+  background-color: var(--white-pure);
+  color: var(--dark-primary);
+  box-shadow: var(--shadow-light);
+}
+
+/* 2. قسم الخدمات (Services) - بدون تغيير */
+.services-section {
+  padding: 100px 0;
+  background-color: var(--light-primary);
+  color: var(--text-light);
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: var(--dark-primary);
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-gold);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.services-grid {
+  margin-top: 50px;
+}
+
+.service-card {
+  text-align: center;
+  padding: 30px;
+  background-color: var(--white-pure);
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-dark);
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 25px;
+}
+
+.service-card .card-title {
+  color: var(--dark-primary);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.service-card .card-text {
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.service-card .btn-outline {
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  margin-top: 20px;
+}
+
+.service-card .btn-outline:hover {
+  background-color: var(--accent-blue);
+  color: var(--white-pure);
+  box-shadow: var(--shadow-light);
+}
+
+/* 3. قسم من نحن (About) - بدون تغيير */
+.about-preview {
+  padding: 100px 0;
+  background-color: var(--dark-secondary);
+  color: var(--text-dark);
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text .section-title {
+  color: var(--white-pure);
+}
+
+.about-text p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-text .btn-primary {
+  background-color: var(--accent-gold);
+  color: var(--text-light);
+  border: 2px solid var(--accent-gold);
+  transition: var(--transition-fast);
+}
+.about-text .btn-primary:hover {
+  background-color: var(--white-pure);
+  color: var(--accent-gold);
+  box-shadow: var(--glow-effect);
+}
+
+.about-image {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-dark);
+  border: 3px solid var(--accent-gold);
+  transition: transform var(--transition-fast);
+}
+
+.about-image:hover {
+  transform: scale(1.02);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(20%);
+}
+
+/* 4. قسم معرض الأعمال (Portfolio) - بدون تغيير */
+.portfolio-preview {
+  padding: 100px 0;
+  background-color: var(--light-primary);
+  color: var(--text-light);
+}
+
+.portfolio-grid {
+  margin-top: 50px;
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: 300px;
+  box-shadow: var(--shadow-light);
+  transition: box-shadow var(--transition-fast);
+}
+
+.portfolio-item:hover {
+  box-shadow: var(--shadow-dark);
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.8);
+}
+
+.portfolio-item:hover .portfolio-image {
+  transform: scale(1.1);
+  filter: brightness(1);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, var(--dark-overlay), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: var(--white-pure);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-overlay h3 {
+  color: var(--white-pure);
+  margin-bottom: 5px;
+}
+
+.portfolio-overlay p {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+/* 5. قسم الدعوة للعمل (CTA Section) - بدون تغيير */
+.cta-section {
+  padding: 80px 0;
+  background-color: var(--dark-primary);
+  color: var(--white-pure);
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  color: var(--accent-gold);
+  text-shadow: var(--glow-effect);
+}
+
+.cta-text {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-dark);
+}
+
+.cta-section .btn-secondary {
+  background-color: var(--accent-gold);
+  color: var(--text-light);
+  border: 2px solid var(--accent-gold);
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-light);
+}
+
+.cta-section .btn-secondary:hover {
+  background-color: transparent;
+  color: var(--accent-gold);
+  box-shadow: var(--glow-effect);
+}
+
+/* 6. Media Queries (للتجاوبية) - بدون تغيير */
+@media (max-width: 992px) {
+  .company-name {
+    font-size: 4rem;
+  }
+  .tagline {
+    font-size: 1.4rem;
+  }
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .about-image {
+    width: 100%;
+  }
+  .cta-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-name {
+    font-size: 3rem;
+  }
+  .tagline {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero-btn {
+    margin: 0;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .services-section, .about-preview, .portfolio-preview, .cta-section {
+    padding: 60px 0;
+  }
+  .portfolio-item {
+    height: 250px;
+  }
+}
+
+/* 7. Grid system and General Utilities - بدون تغيير */
+.grid {
+  display: grid;
+  gap: 30px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.text-center {
+  text-align: center;
+}

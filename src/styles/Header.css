@@ -1,0 +1,275 @@
+/* Header.css */
+
+/* المتغيرات الأساسية للمشروع */
+:root {
+    --dark-primary: #1a1a1a; /* لون الخلفية الرئيسي للهيدر */
+    --white-pure: #e0e0e0; /* لون أبيض نقي للنصوص */
+    --accent-gold: #FFD700; /* لون ذهبي للتميز */
+    --transition-fast: 0.3s ease-in-out; /* سرعة انتقال سريعة */
+    --text-dark: #b0b0b0; /* لون نص رمادي */
+    --border-dark: #444; /* لون حدود داكنة */
+    --transition-medium: 0.5s ease-in-out; /* سرعة انتقال متوسطة */
+}
+
+/* ----------------------------------------------------- */
+/* أنماط شريط التنقل (Navbar) الرئيسي */
+/* ----------------------------------------------------- */
+
+.header {
+    background-color: var(--dark-primary); /* خلفية داكنة */
+    padding: 15px 40px; /* بادينج: 15px أعلى/أسفل، 40px يمين/يسار */
+    display: flex;
+    justify-content: space-between; /* يدفع اللوجو لليسار والقائمة لليمين */
+    align-items: center; /* لمحاذاة العناصر عمودياً في المنتصف */
+    position: fixed; /* شريط تنقل ثابت في الأعلى */
+    width: 100%; /* يأخذ عرض الشاشة بالكامل */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* لضمان ظهوره فوق المحتوى الآخر */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* ظل خفيف */
+    direction: ltr; /* ضمان أن اتجاه التخطيط من اليسار لليمين */
+    box-sizing: border-box; /* لضمان أن البادينج لا يزيد العرض الكلي للهيدر عن 100% */
+}
+
+/* ----------------------------------------------------- */
+/* أنماط اللوجو "Evanox" */
+/* ----------------------------------------------------- */
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo a {
+    text-decoration: none !important; /* إزالة الخط السفلي بقوة */
+    color: var(--white-pure); /* لون اللوجو الافتراضي */
+    font-size: 2.2rem; /* حجم الخط للوجو */
+    font-weight: 900; /* وزن الخط جريء */
+    letter-spacing: 1.5px; /* تباعد الحروف */
+    transition: color var(--transition-fast);
+}
+
+.header-logo a:hover {
+    color: var(--accent-gold); /* لون ذهبي عند التحويم */
+    text-shadow: 0 0 8px var(--accent-gold); /* توهج ذهبي خفيف */
+}
+
+.header-logo .logo-text {
+    text-decoration: none !important;
+    color: inherit;
+}
+/* Header.css */
+
+.header-logo .logo-icon {
+  height: 55px; /* قم بتعديل هذه القيمة حسب الحاجة، مثلاً: 40px، 60px، وهكذا */
+  width: auto; /* يضمن أن العرض يتناسب تلقائيًا مع الارتفاع للحفاظ على نسبة الأبعاد */
+  vertical-align: middle; /* يساعد في محاذاة الصورة عموديًا إذا كان هناك نص بجانبها */
+  /* يمكنك إضافة margin-right إذا أردت مسافة بين الصورة وأي نص محتمل */
+}
+
+/* ----------------------------------------------------- */
+/* أنماط قائمة التنقل (Desktop) */
+/* ----------------------------------------------------- */
+
+.header-menu {
+    list-style: none; /* إزالة نقاط القائمة */
+    margin: 0;
+    padding: 0;
+    display: flex; /* لعرض عناصر القائمة أفقياً */
+    /* === مراجعة الـ gap مرة أخرى === */
+    /* إذا كانت الأزرار قريبة جداً بعد زيادة الخط، زد هذه القيمة ببطء */
+    gap: 18px; /* زيادة طفيفة من 15px إلى 18px */
+    
+    align-items: center; /* لمحاذاة العناصر عمودياً */
+}
+
+.nav-item .nav-link {
+    color: var(--white-pure); /* لون النص الافتراضي أبيض نقي */
+    text-decoration: none !important; /* إزالة الخط السفلي بقوة */
+    /* === التعديل هنا: زيادة حجم الخط === */
+    font-size: 1.05rem; /* زيادة من 1rem إلى 1.05rem (قيمة وسطية) */
+    font-weight: 600;
+    padding: 5px 0; /* بادينج خفيف */
+    position: relative;
+    transition: color var(--transition-fast), text-shadow var(--transition-fast);
+    text-shadow: none !important;
+    margin: 0; 
+}
+
+.nav-item .nav-link:hover {
+    color: var(--accent-gold);
+    text-shadow: 0 0 5px var(--accent-gold);
+}
+
+/* تأثير الخط السفلي عند التحويم أو للرابط النشط */
+.nav-item .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-gold);
+    transition: width var(--transition-fast);
+}
+
+.nav-item .nav-link:hover::after,
+.nav-item .nav-link.active::after {
+    width: 100%;
+    background-color: var(--accent-gold) !important;
+}
+
+.nav-item .nav-link.active {
+    color: var(--accent-gold) !important;
+    text-shadow: 0 0 8px var(--accent-gold) !important;
+}
+
+/* ----------------------------------------------------- */
+/* زر "تواصل معنا" (Contact Button) */
+/* ----------------------------------------------------- */
+
+.nav-item .contact-btn {
+    background-color: var(--accent-gold);
+    color: var(--dark-primary);
+    /* === التعديل هنا: زيادة البادينج وحجم الخط === */
+    padding: 9px 20px; /* زيادة البادينج قليلاً */
+    font-size: 1.05rem; /* زيادة من 1rem إلى 1.05rem (نفس حجم روابط القائمة) */
+    
+    border-radius: 5px;
+    font-weight: 700;
+    transition: all var(--transition-fast);
+    border: 2px solid var(--accent-gold);
+    text-decoration: none !important;
+    display: inline-block;
+    margin: 0; 
+}
+
+.nav-item .contact-btn:hover {
+    background-color: transparent;
+    color: var(--accent-gold);
+    box-shadow: 0 0 10px var(--accent-gold);
+    text-shadow: none !important;
+}
+
+/* ----------------------------------------------------- */
+/* زر قائمة البرجر للجوال (Hamburger Button) */
+/* ----------------------------------------------------- */
+
+.menu-toggle-button {
+    display: none; /* مخفي بشكل افتراضي في سطح المكتب */
+    background: none;
+    border: none;
+    color: var(--white-pure);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px 10px;
+    transition: color var(--transition-fast);
+}
+
+.menu-toggle-button:hover {
+    color: var(--accent-gold);
+}
+
+
+/* ----------------------------------------------------- */
+/* استجابة الشاشات (Media Queries) */
+/* ----------------------------------------------------- */
+
+@media (max-width: 992px) { 
+    .header {
+        padding: 15px 30px; 
+    }
+    .header-logo a {
+        font-size: 2rem; 
+    }
+    .nav-item .nav-link,
+    .nav-item .contact-btn {
+        /* تعديل حجم الخط في شاشات التابلت/اللابتوب الصغيرة */
+        font-size: 1rem; /* إعادة ضبطها لـ 1rem هنا */
+    }
+    .header-menu {
+        gap: 15px; /* زيادة طفيفة للـ gap هنا أيضاً */
+    }
+    .nav-item .contact-btn {
+        padding: 8px 18px; /* إعادة ضبط البادينج للزر في الشاشات الأصغر */
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+
+    .header-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-primary);
+        border-top: 1px solid var(--border-dark);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        transform: translateY(-100%);
+        transition: transform var(--transition-medium) ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+        padding: 20px 0;
+        align-items: center;
+        gap: 0; 
+    }
+
+    .header-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+    }
+
+    .nav-item .nav-link {
+        font-size: 1.3rem; /* حافظ على حجم كبير لقائمة الجوال */
+        padding: 10px 0;
+    }
+
+    .nav-item .nav-link::after {
+        height: 2px;
+        bottom: -3px;
+    }
+
+    .menu-toggle-button {
+        display: block;
+    }
+
+    .nav-item .contact-btn {
+        width: fit-content;
+        margin-top: 20px;
+        font-size: 1.2rem; /* تأكد من حجم الزر في الجوال */
+        padding: 10px 25px; /* زيادة بادينج الزر في الجوال */
+    }
+}
+
+/* ----------------------------------------------------- */
+/* أنماط الشاشات الأصغر جداً (اختياري) */
+/* ----------------------------------------------------- */
+
+@media (max-width: 480px) {
+    .header-logo a {
+        font-size: 1.8rem;
+    }
+    .header {
+        padding: 10px 15px;
+    }
+    .menu-toggle-button {
+        font-size: 1.8rem;
+    }
+    .nav-item .nav-link {
+        font-size: 1.1rem; /* تقليل حجم الخط قليلاً في أصغر الشاشات */
+    }
+    .nav-item .contact-btn {
+        font-size: 1.1rem; /* تقليل حجم الخط قليلاً في أصغر الشاشات */
+        padding: 8px 20px;
+    }
+}

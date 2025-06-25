@@ -1,0 +1,604 @@
+/*
+    ملف Services.css
+    يستخدم المتغيرات المعرفة في Home.css لضمان التناسق البصري.
+    تم إزالة تعريفات :root لتجنب التعارض.
+*/
+
+/* 2. تنسيق رأس صفحة الخدمات (Header) */
+.services-header {
+    background-color: var(--dark-primary); /* مطابقة للخلفية الرئيسية الداكنة */
+    padding: 120px 0 60px;
+    text-align: center;
+    color: var(--text-dark); /* نص رمادي فاتح */
+    border-bottom: 1px solid var(--border-dark); /* حدود داكنة */
+}
+
+.services-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: var(--accent-gold); /* ذهبي نقي */
+    text-shadow: var(--glow-effect); /* توهج ذهبي */
+}
+
+.services-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-dark); /* نص رمادي فاتح */
+}
+
+/* 3. تنسيق أقسام الخدمات الفردية (Service Sections) */
+.service-section {
+    padding: 80px 0;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.service-section:nth-of-type(odd) {
+    background-color: var(--dark-primary); /* لون رئيسي داكن (عكس اللون السابق) */
+}
+
+.service-section:nth-of-type(even) {
+    background-color: var(--dark-secondary); /* لون ثانوي أغمق قليلاً (عكس اللون السابق) */
+}
+
+.service-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.service-content.reverse {
+    flex-direction: row-reverse;
+}
+
+.service-text {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.service-text .section-title {
+    font-size: 2.8rem;
+    color: var(--white-pure); /* أبيض نقي */
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.service-text .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-gold); /* ذهبي نقي */
+    border-radius: 1px;
+}
+
+.service-text p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: var(--text-dark); /* نص رمادي فاتح */
+}
+
+.service-image {
+    flex: 1;
+    min-width: 400px;
+    max-width: 550px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-dark);
+    border: 1px solid var(--accent-secondary-gold); /* ذهبي ثانوي أغمق قليلاً */
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-image:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+.service-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.service-features {
+    margin-top: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    padding: 15px 20px;
+    background-color: var(--dark-tertiary); /* لون جديد للخلفية الأكثر عمقاً */
+    border: 1px solid var(--border-dark);
+    border-left: 4px solid var(--accent-gold); /* ذهبي نقي */
+    border-radius: 8px;
+    box-shadow: var(--shadow-dark);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.feature-item:hover {
+    background-color: var(--dark-primary); /* لون رئيسي داكن */
+    border-color: var(--accent-gold);
+    transform: translateX(5px);
+}
+
+.feature-icon {
+    color: var(--accent-gold);
+    margin-inline-end: 15px;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.feature-item h4 {
+    font-size: 1.15rem;
+    color: var(--white-pure); /* أبيض نقي */
+    margin-bottom: 5px;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-dark); /* نص رمادي فاتح */
+    margin-bottom: 0;
+}
+
+/* 4. تنسيق قسم عملية العمل (Process Section) */
+.process-section {
+    padding: 90px 0;
+    background-color: var(--dark-primary); /* لون رئيسي داكن */
+    color: var(--text-dark);
+    border-top: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.process-steps {
+    margin-top: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 50px;
+}
+
+.process-steps::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 25px;
+    width: 2px;
+    background-color: var(--border-dark); /* حدود داكنة */
+    border-radius: 1px;
+    z-index: 0;
+}
+
+.process-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.process-step:last-child {
+    margin-bottom: 0;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent-gold); /* ذهبي نقي */
+    color: var(--text-light); /* نص داكن على الخلفيات الفاتحة (لون النص على الذهبي) */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-inline-end: 20px;
+    z-index: 1;
+    box-shadow: var(--shadow-dark);
+    border: 1px solid var(--accent-secondary-gold); /* ذهبي ثانوي أغمق قليلاً */
+    flex-shrink: 0;
+}
+
+.step-content {
+    background-color: var(--dark-secondary); /* لون ثانوي أغمق قليلاً */
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-dark);
+    flex: 1;
+    border: 1px solid var(--border-dark);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.step-content:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.step-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--white-pure); /* أبيض نقي */
+}
+
+.step-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-dark); /* نص رمادي فاتح */
+}
+
+/* 5. تنسيق قسم باقات الأسعار (Pricing Section) */
+.pricing-section {
+    padding: 90px 0;
+    background-color: var(--dark-secondary); /* لون ثانوي أغمق قليلاً */
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.pricing-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.pricing-card {
+    text-align: center;
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-dark);
+    border: 1px solid var(--border-dark);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* تصميم البطاقات الجانبية (الأساسية والاحترافية) - الفاتحة مع نص داكن */
+.pricing-card:not(.featured) {
+    background-color: var(--light-primary); /* خلفية فاتحة جداً */
+    border-color: #E0E0E0; /* حدود فاتحة تناسب الخلفية (يمكن تغييرها لـ var(--border-light) لو موجود) */
+}
+
+.pricing-card:not(.featured) .pricing-title {
+    color: var(--accent-gold); /* العناوين باللون الذهبي */
+    transition: color var(--transition-fast);
+}
+
+.pricing-card:not(.featured) .pricing-price {
+    color: var(--text-light); /* السعر داكن */
+    transition: color var(--transition-fast);
+}
+
+.pricing-card:not(.featured) .pricing-period {
+    color: var(--text-light); /* فترة السعر داكنة متوسطة (استخدمت text-light لأنها أقرب) */
+    transition: color var(--transition-fast);
+}
+
+.pricing-card:not(.featured) p { /* وصف الباقة */
+    color: var(--text-light); /* وصف داكن */
+    transition: color var(--transition-fast);
+}
+.pricing-card:not(.featured):hover p {
+    color: var(--white-pure); /* أبيض عند التمرير */
+}
+
+.pricing-card:not(.featured) .pricing-feature {
+    color: var(--text-light); /* نص الميزات داكن */
+    border-bottom-color: #DDDDDD; /* خط فاصل أفتح للميزات (يمكن تغييرها لـ var(--border-light) لو موجود) */
+    transition: color var(--transition-fast);
+}
+.pricing-card:not(.featured):hover .pricing-feature {
+    color: var(--white-pure); /* أبيض عند التمرير */
+}
+
+.pricing-feature::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    font-weight: 900;
+    color: var(--accent-gold); /* اللون الذهبي لعلامة الصح */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+}
+
+/* التعديل هنا: إزالة الخط السفلي من جميع أزرار ".btn" داخل ".pricing-card" */
+.pricing-card .btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: auto;
+    text-decoration: none; /* تم إضافة هذا السطر لإزالة الخط السفلي من جميع الأزرار */
+}
+
+.pricing-card .btn-outline {
+    border: 2px solid var(--accent-gold);
+    color: var(--accent-gold);
+    background-color: transparent;
+}
+.pricing-card .btn-outline:hover {
+    background-color: var(--accent-gold);
+    color: var(--text-light); /* نص داكن على الخلفية الفاتحة (لزر يصبح ذهبياً) */
+    box-shadow: var(--shadow-dark);
+    transform: translateY(-3px);
+}
+
+.pricing-card .btn-primary {
+    background: linear-gradient(45deg, var(--accent-gold), var(--accent-secondary-gold)); /* تدرج ذهبي أنيق */
+    color: var(--text-light); /* نص داكن على الخلفية الفاتحة */
+    border: none;
+    box-shadow: var(--shadow-dark);
+}
+.pricing-card .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-dark), 0 5px 10px rgba(0, 0, 0, 0.4);
+    opacity: 0.95;
+}
+
+.pricing-card:not(.featured) .btn-outline {
+    border-color: var(--text-light); /* حدود داكنة للزر */
+    color: var(--text-light); /* نص داكن للزر */
+    /* text-decoration: none;  تم نقل هذا إلى .pricing-card .btn لتغطية جميع الأزرار */
+}
+.pricing-card:not(.featured) .btn-outline:hover {
+    background-color: var(--text-light); /* خلفية داكنة عند التحويم */
+    color: var(--light-primary); /* نص فاتح عند التحويم */
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.pricing-card:not(.featured):hover {
+    background-color: var(--dark-primary); /* خلفية داكنة عند التحويم للبطاقات الجانبية */
+    border-color: var(--accent-gold); /* حدود ذهبية عند التحويم للبطاقات الجانبية */
+}
+
+.pricing-card.featured {
+    background-color: var(--dark-primary); /* البطاقة المميزة تبقى داكنة */
+    color: var(--white-pure);
+    border: 2px solid var(--accent-gold);
+    box-shadow: var(--glow-effect); /* توهج ذهبي */
+    transform: scale(1.04) translateY(-12px);
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.05) translateY(-12px);
+    box-shadow: var(--secondary-glow-effect); /* توهج ذهبي ثانوي */
+    border-color: var(--accent-secondary-gold);
+}
+
+.pricing-title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.pricing-card.featured .pricing-title {
+    color: var(--accent-gold); /* عنوان ذهبي للبطاقة المميزة */
+}
+
+.pricing-price {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.pricing-card.featured .pricing-price {
+    color: var(--white-pure); /* سعر أبيض للبطاقة المميزة */
+}
+
+.pricing-period {
+    font-size: 1.05rem;
+    display: block;
+    margin-top: -10px;
+}
+
+.pricing-card.featured .pricing-period {
+    color: var(--text-dark); /* فترة سعر رمادية للبطاقة المميزة */
+}
+
+.pricing-card > p {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.pricing-card.featured > p {
+    color: var(--text-dark); /* وصف رمادي للبطاقة المميزة */
+}
+
+.pricing-features {
+    list-style: none;
+    margin: 25px 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.pricing-feature {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    font-size: 1rem;
+    padding-right: 30px;
+    text-align: right;
+}
+
+.pricing-card.featured .pricing-feature {
+    color: var(--text-dark); /* نص ميزات فاتح للبطاقة المميزة (استخدمت text-dark) */
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.pricing-feature:last-child {
+    border-bottom: none;
+}
+
+/* 6. تنسيق قسم الأسئلة الشائعة (FAQ Section) */
+.faq-section {
+    padding: 90px 0;
+    background-color: var(--dark-primary); /* لون رئيسي داكن */
+    color: var(--text-dark);
+    border-top: 1px solid var(--border-dark);
+}
+
+.faq-container {
+    margin-top: 50px;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq-item {
+    background-color: var(--dark-secondary); /* لون ثانوي أغمق قليلاً */
+    border-radius: 10px;
+    box-shadow: var(--shadow-dark);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-dark);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.faq-item:hover {
+    background-color: var(--dark-primary); /* لون رئيسي داكن */
+    border-color: var(--accent-gold);
+    transform: translateY(-3px);
+}
+
+.faq-question {
+    padding: 20px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--accent-gold); /* لون ذهبي للسؤال */
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.faq-item.active .faq-question {
+    background-color: var(--dark-primary); /* لون رئيسي داكن عند النشاط */
+    color: var(--accent-gold);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.faq-answer {
+    padding: 0 25px;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    background-color: var(--dark-primary); /* لون رئيسي داكن للخلفية الداخلية للإجابة */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding: 15px 25px 20px;
+}
+
+.faq-icon {
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+    transition: transform 0.3s ease, color var(--transition-fast);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+    color: var(--white-pure); /* أبيض نقي */
+}
+
+/* 7. التجاوبية (Media Queries) */
+@media (max-width: 992px) {
+    .services-header h1 { font-size: 3rem; }
+    .services-header p { font-size: 1.05rem; }
+    .service-content,
+    .service-content.reverse {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .service-image { width: 100%; min-width: unset; max-width: unset; }
+    .service-text { text-align: center; max-width: 100%; }
+    .service-text .section-title { font-size: 2.5rem; }
+    .service-text .section-title::after { right: 50%; transform: translateX(50%); }
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        border-left: none;
+        border-top: 4px solid var(--accent-gold);
+    }
+    .feature-icon { margin-inline-end: 0; margin-bottom: 10px; }
+    .process-steps {
+        align-items: flex-start;
+        padding-right: 0;
+        padding-left: 50px;
+    }
+    .process-steps::before { right: unset; left: 25px; }
+    .process-step { justify-content: flex-start; }
+    .step-number { margin-inline-end: 0; margin-inline-start: 20px; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.featured { transform: scale(1.03) translateY(-10px); }
+    .pricing-card.featured:hover { transform: scale(1.04) translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+    .services-header h1 { font-size: 2.5rem; }
+    .service-section { padding: 70px 0; }
+    .service-text .section-title { font-size: 2.2rem; }
+    .step-title { font-size: 1.6rem; }
+    .pricing-title { font-size: 2rem; }
+    .pricing-price { font-size: 3.5rem; }
+    .faq-question { font-size: 1rem; padding: 18px 20px; }
+    .faq-answer { font-size: 0.9rem; padding: 0 20px; }
+}
+
+@media (max-width: 480px) {
+    .services-header { padding: 100px 0 50px; }
+    .services-header h1 { font-size: 2rem; }
+    .services-header p { font-size: 0.95rem; }
+    .service-section { padding: 50px 0; }
+    .service-text .section-title { font-size: 1.8rem; }
+    .service-text p { font-size: 0.9rem; }
+    .feature-item { padding: 12px 15px; }
+    .feature-icon { font-size: 1.3rem; }
+    .feature-item h4 { font-size: 1.05rem; }
+    .step-number { width: 45px; height: 45px; font-size: 1.4rem; }
+    .step-content { padding: 18px 20px; }
+    .step-title { font-size: 1.4rem; }
+    .pricing-card { padding: 30px 20px; }
+    .pricing-title { font-size: 1.8rem; }
+    .pricing-price { font-size: 3rem; }
+    .pricing-feature { font-size: 0.95rem; }
+    .pricing-card .btn { padding: 12px 18px; font-size: 1rem; }
+    .faq-item { margin-bottom: 15px; }
+    .faq-question { font-size: 0.95rem; padding: 16px 18px; }
+    .faq-answer { font-size: 0.85rem; padding: 0 18px; }
+    .faq-item.active .faq-answer { padding: 12px 18px 15px; }
+}

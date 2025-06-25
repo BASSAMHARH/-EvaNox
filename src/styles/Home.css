@@ -1,0 +1,577 @@
+/*
+    المتغيرات (Variables)
+    --------------------
+    هنا تُعرّف جميع المتغيرات العامة التي ستُستخدم في التطبيق.
+    تم توحيدها وتنسيقها لضمان الاتساق.
+*/
+:root {
+  /* --- ألوان الخلفيات والنصوص --- */
+  --primary-gold: #FFD700; /* الذهبي الأساسي والساطع */
+  --dark-background: #1a1a1a; /* الخلفية الداكنة الرئيسية (للأقسام والـ Hero) */
+  --secondary-dark-background: #2c2c2c; /* الخلفية الداكنة الثانوية (لكروت الخدمات، قسم من نحن) */
+  --tertiary-dark-background: #202020; /* لون أغمق قليلاً للعناصر الداخلية (إذا لزم الأمر) */
+
+  --text-light-on-dark: #b0b0b0; /* نص رمادي فاتح للخلفيات الداكنة */
+  --text-white-pure: #e0e0e0; /* أبيض نقي بدرجة رمادية خفيفة (للعناوين البارزة) */
+  --text-on-gold: #000000; /* نص داكن (مثل الأسود) للخلفيات الذهبية */
+  
+  --accent-bronze: #cd7f32; /* لون برونزي فعلي (غير رمادي داكن) */
+  --accent-blue: #007bff; /* لون أزرق للتمييز (إذا لزم الأمر) */
+
+  /* --- الحدود والتراكبات --- */
+  --border-color: #444; /* لون الحدود الداكنة */
+  --dark-overlay: rgba(0, 0, 0, 0.85); /* تراكب داكن قوي */
+  --light-overlay: rgba(255, 255, 255, 0.1); /* تراكب فاتح خفيف */
+  --footer-bg-opacity: rgba(0, 0, 0, 0.95); /* خلفية الفوتر شبه الشفافة */
+
+  /* --- الظلال --- */
+  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+  --shadow-strong: 0 5px 20px rgba(0, 0, 0, 0.6); /* ظل قوي */
+
+  /* --- تأثيرات التوهج (ذهبي) --- */
+  --gold-glow-effect: 0 0 15px var(--primary-gold), 0 0 25px var(--primary-gold), 0 0 35px var(--primary-gold);
+  --secondary-glow-effect: 0 0 10px var(--accent-secondary-gold), 0 0 20px var(--accent-secondary-gold); /* يجب تعريف --accent-secondary-gold إذا لم يكن معرفاً */
+  /* إضافة متغير لظل خفيف للعداد لتوهج ذهبي ناعم عند التحويم */
+  --counter-glow-hover: 0 0 10px rgba(255, 215, 0, 0.5);
+
+  /* --- الانتقالات --- */
+  --transition-fast: 0.3s ease-in-out;
+  --transition-medium: 0.5s ease-in-out;
+  --transition-slow: 1s ease-in-out;
+  --transition-quick: 0s ease-out; /* انتقال فوري */
+
+  /* --- ألوان الجزيئات (تستخدم الذهبي الأساسي) --- */
+  --particle-color: rgba(255, 215, 0, 0.1);
+  --particle-glow: rgba(255, 215, 0, 0.05);
+
+  /* --- أبعاد الشريط العلوي (Navbar) --- */
+  --header-height: 80px;
+  --logo-font-size: 1.8rem;
+  --nav-link-font-size: 1rem;
+  --menu-toggle-size: 30px;
+}
+
+/*
+    الأنماط الأساسية للجسم والتخطيط العام
+    ------------------------------------
+*/
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: var(--dark-background);
+  color: var(--text-light-on-dark);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  gap: 30px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* 1. قسم Home Hero (الواجهة الرئيسية) */
+.home-hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--dark-background); /* استخدام المتغير الموحد */
+  color: var(--text-light-on-dark); /* استخدام المتغير الموحد */
+  position: relative;
+  overflow: hidden;
+}
+
+/* تم نقل كود الجزيئات إلى Particles.css */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.company-name {
+  font-size: 5.5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  letter-spacing: 3px;
+  color: var(--text-white-pure); /* استخدام المتغير الموحد */
+  text-shadow: var(--gold-glow-effect); /* استخدام المتغير الموحد */
+  position: relative;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px var(--primary-gold), 0 0 20px var(--primary-gold), 0 0 30px var(--primary-gold);
+  }
+  to {
+    text-shadow: 0 0 20px var(--primary-gold), 0 0 30px var(--primary-gold), 0 0 40px var(--primary-gold);
+  }
+}
+
+.tagline {
+  font-size: 1.6rem;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  opacity: 1;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  color: var(--text-light-on-dark); /* استخدام المتغير الموحد */
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tagline.fade-in:last-child {
+  font-family: 'Amiri', serif;
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--text-white-pure); /* استخدام المتغير الموحد */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+}
+
+.hero-buttons .btn {
+  margin: 0 10px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  font-weight: 700;
+  transition: var(--transition-fast);
+  text-decoration: none; /* **تأكيد إزالة الخط السفلي هنا** */
+}
+
+.hero-buttons .btn-secondary {
+  background-color: var(--primary-gold); /* استخدام المتغير الموحد */
+  color: var(--text-on-gold); /* استخدام المتغير الموحد */
+  border: 2px solid var(--primary-gold); /* استخدام المتغير الموحد */
+  box-shadow: var(--shadow-light); /* استخدام المتغير الموحد */
+}
+
+.hero-buttons .btn-secondary:hover {
+  background-color: transparent;
+  color: var(--primary-gold); /* استخدام المتغير الموحد */
+  box-shadow: var(--gold-glow-effect); /* استخدام المتغير الموحد */
+  transform: translateY(-3px); /* إضافة تأثير بسيط للرفع */
+}
+
+.hero-buttons .btn-outline {
+  background-color: transparent;
+  color: var(--text-white-pure); /* استخدام المتغير الموحد */
+  border: 2px solid var(--text-white-pure); /* استخدام المتغير الموحد */
+}
+
+.hero-buttons .btn-outline:hover {
+  background-color: var(--text-white-pure); /* استخدام المتغير الموحد */
+  color: var(--dark-background); /* استخدام المتغير الموحد */
+  box-shadow: var(--shadow-light); /* استخدام المتغير الموحد */
+  transform: translateY(-3px); /* إضافة تأثير بسيط للرفع */
+}
+
+/* 2. قسم الخدمات (Services) */
+.services-section {
+  padding: 100px 0;
+  background-color: var(--dark-background); /* استخدام المتغير الموحد */
+  color: var(--text-light-on-dark); /* استخدام المتغير الموحد */
+}
+
+.section-title {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  color: var(--text-white-pure); /* استخدام المتغير الموحد */
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-gold); /* استخدام المتغير الموحد */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.services-grid {
+  margin-top: 50px;
+}
+
+.service-card {
+  text-align: center;
+  padding: 30px;
+  background-color: var(--secondary-dark-background); /* استخدام المتغير الموحد */
+  border-radius: 8px;
+  box-shadow: var(--shadow-light); /* استخدام المتغير الموحد */
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast); /* تعديل من quick إلى fast */
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--gold-glow-effect); /* الظل الذهبي المتوهج */
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  color: var(--primary-gold); /* استخدام المتغير الموحد */
+  margin-bottom: 25px;
+}
+
+.service-card .card-title {
+  color: var(--text-white-pure); /* استخدام المتغير الموحد */
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.service-card .card-text {
+  color: var(--text-light-on-dark); /* استخدام المتغير الموحد */
+  line-height: 1.7;
+}
+
+.service-card .btn-outline {
+  color: var(--primary-gold); /* لون النص ذهبي */
+  border-color: var(--primary-gold); /* لون الحدود ذهبي */
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none; /* إزالة الخط السفلي */
+  display: inline-block;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.service-card .btn-outline:hover {
+  background-color: var(--primary-gold); /* خلفية ذهبية عند التحويم */
+  color: var(--text-on-gold); /* نص داكن على الخلفية الذهبية */
+  box-shadow: var(--gold-glow-effect); /* توهج ذهبي عند التحويم على الزر */
+  transform: translateY(-3px); /* تأثير رفع خفيف */
+}
+
+/* 3. قسم من نحن (About) */
+.about-preview {
+  padding: 100px 0;
+  background-color: var(--secondary-dark-background); /* استخدام المتغير الموحد */
+  color: var(--text-light-on-dark); /* استخدام المتغير الموحد */
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center; /* توسيط المحتوى أفقياً */
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px; /* ضمان عرض أدنى لتجنب تضييق النص جداً */
+}
+
+.about-text .section-title {
+  color: var(--primary-gold); /* استخدام المتغير الموحد */
+  text-shadow: var(--gold-glow-effect); /* استخدام المتغير الموحد */
+}
+
+.about-text p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-text .btn-primary {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+
+  background-color: var(--primary-gold);
+  color: var(--text-on-gold);
+  border: 2px solid var(--primary-gold);
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-light); /* استخدام المتغير الموحد */
+}
+
+.about-text .btn-primary:hover {
+  background-color: var(--primary-gold); /* يمكن أن يكون شفافاً مع توهج؟ */
+  color: var(--dark-background); /* يمكن أن يكون ذهبياً؟ */
+  border-color: var(--dark-background); /* يمكن أن يكون ذهبياً؟ */
+  box-shadow: var(--gold-glow-effect);
+  transform: translateY(-3px);
+  /* توحيد سلوك التحويم مع الأزرار الأخرى */
+  background-color: transparent; /* لتتماشى مع hero-buttons */
+  color: var(--primary-gold); /* لتتماشى مع hero-buttons */
+  border-color: var(--primary-gold); /* لتتماشى مع hero-buttons */
+}
+
+.about-image {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-strong); /* استخدام المتغير الموحد */
+  border: 3px solid var(--primary-gold); /* استخدام المتغير الموحد */
+  transition: transform var(--transition-fast);
+  min-width: 300px; /* ضمان عرض أدنى للصورة */
+}
+
+.about-image:hover {
+  transform: scale(1.02);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(20%);
+}
+
+/* 4. قسم معرض الأعمال (Portfolio) */
+.portfolio-preview {
+  padding: 100px 0;
+  background-color: var(--dark-background); /* استخدام المتغير الموحد */
+  color: var(--text-light-on-dark); /* استخدام المتغير الموحد */
+}
+
+.portfolio-grid {
+  margin-top: 50px;
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: 300px;
+  box-shadow: var(--shadow-strong); /* استخدام المتغير الموحد */
+  transition: box-shadow var(--transition-fast);
+}
+
+.portfolio-item:hover {
+  box-shadow: var(--gold-glow-effect); /* الظل الذهبي المتوهج */
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.8);
+}
+
+.portfolio-item:hover .portfolio-image {
+  transform: scale(1.1);
+  filter: brightness(1);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, var(--dark-overlay), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: var(--text-white-pure); /* استخدام المتغير الموحد */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-overlay h3 {
+  color: var(--text-white-pure); /* استخدام المتغير الموحد */
+  margin-bottom: 5px;
+}
+
+.portfolio-overlay p {
+  font-size: 0.9rem;
+  color: var(--text-light-on-dark); /* استخدام المتغير الموحد */
+}
+
+.portfolio-preview .btn-primary {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+
+  background-color: var(--primary-gold);
+  color: var(--text-on-gold);
+  border: 2px solid var(--primary-gold);
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-light);
+}
+
+.portfolio-preview .btn-primary:hover {
+  background-color: transparent; /* توحيد سلوك التحويم */
+  color: var(--primary-gold); /* توحيد سلوك التحويم */
+  border-color: var(--primary-gold); /* توحيد سلوك التحويم */
+  box-shadow: var(--gold-glow-effect);
+  transform: translateY(-3px);
+}
+
+/* 5. قسم الدعوة للعمل (CTA Section) */
+.cta-section {
+  padding: 80px 0;
+  background-color: var(--dark-background); /* استخدام المتغير الموحد */
+  color: var(--text-white-pure); /* استخدام المتغير الموحد */
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  color: var(--primary-gold); /* استخدام المتغير الموحد */
+  text-shadow: var(--gold-glow-effect); /* استخدام المتغير الموحد */
+}
+
+.cta-text {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-light-on-dark); /* استخدام المتغير الموحد */
+}
+
+.cta-section .btn-secondary {
+  background-color: var(--primary-gold); /* استخدام المتغير الموحد */
+  color: var(--text-on-gold); /* استخدام المتغير الموحد */
+  border: 2px solid var(--primary-gold); /* استخدام المتغير الموحد */
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-light); /* استخدام المتغير الموحد */
+  transition: var(--transition-fast);
+  text-decoration: none; /* إزالة الخط السفلي */
+}
+
+.cta-section .btn-secondary:hover {
+  background-color: transparent;
+  color: var(--primary-gold);
+  box-shadow: var(--gold-glow-effect);
+  transform: translateY(-3px); /* إضافة تأثير بسيط للرفع */
+}
+
+/* 6. Media Queries (للتجاوبية) */
+@media (max-width: 992px) {
+  .company-name {
+    font-size: 4rem;
+  }
+  .tagline {
+    font-size: 1.4rem;
+  }
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .about-image {
+    width: 100%;
+  }
+  .cta-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-name {
+    font-size: 3rem;
+  }
+  .tagline {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero-btn {
+    margin: 0;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .services-section, .about-preview, .portfolio-preview, .cta-section {
+    padding: 60px 0;
+  }
+  .portfolio-item {
+    height: 250px;
+  }
+}
+
+/* تنسيق خاص بعداد الزوار - تم التعديل */
+.visitor-counter {
+    font-size: 1.2rem;
+    color: var(--text-light-on-dark); /* تم التعديل ليتناسب مع المتغيرات الموحدة */
+    margin-top: 1.5rem; /* زيادة المسافة قليلاً */
+    text-shadow: 0 0 5px rgba(0,0,0,0.3);
+    padding: 0.6rem 1.2rem; /* زيادة المساحة الداخلية قليلاً */
+    background-color: rgba(44, 44, 44, 0.7); /* استخدام rgba على --secondary-dark-background */
+    border-radius: 8px;
+    display: inline-block;
+    backdrop-filter: blur(5px); /* زيادة الضبابية قليلاً */
+    border: 1px solid rgba(var(--primary-gold-rgb, 255, 215, 0), 0.2); /* إضافة حدود ذهبية خافتة */
+    box-shadow: var(--shadow-light); /* إضافة ظل خفيف افتراضي */
+    transition: all var(--transition-fast); /* انتقال لجميع الخصائص */
+}
+
+.visitor-counter span {
+    font-weight: bold;
+    color: var(--primary-gold); /* استخدام var(--primary-gold) مباشرة */
+    text-shadow: var(--gold-glow-effect);
+    margin-right: 0.5rem;
+}
+
+.visitor-counter:hover {
+    transform: translateY(-2px) scale(1.02); /* تأثير رفع وتكبير طفيف عند التحويم */
+    box-shadow: var(--counter-glow-hover); /* استخدام متغير التوهج الجديد المحدد للعداد */
+    border-color: var(--primary-gold); /* جعل الحدود ذهبية بالكامل عند التحويم */
+}
+
+/* إضافة متغير RGB لـ primary-gold إذا لم يكن معرفاً لتسهيل استخدام rgba */
+/* (يمكن وضعه في :root إذا لم يكن موجوداً) */
+:root {
+    --primary-gold-rgb: 255, 215, 0; /* لسهولة استخدام rgba في الحدود */
+    /* ... بقية المتغيرات ... */
+}

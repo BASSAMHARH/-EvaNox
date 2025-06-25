@@ -1,0 +1,221 @@
+/* 1. المتغيرات العامة */
+:root {
+    /* ألوان الظلام */
+    --dark-primary: #1a1a1a;
+    --dark-secondary: #2c2c2c; /* لون ثانوي أغمق قليلاً للخلفيات */
+    --dark-tertiary: #202020; /* لون جديد للخلفية الأكثر عمقاً */
+    --text-dark: #b0b0b0; /* رمادي فاتح جيد على الخلفية الداكنة */
+    --border-dark: #444;
+
+    /* ألوان النور / التميز */
+    --light-primary: #f5f5f5; /* لون فاتح للخلفيات الفاتحة */
+    --text-light: #333333; /* نص داكن على الخلفيات الفاتحة */
+    --white-pure: #FFFFFF; /* أبيض نقي للنصوص البارزة */
+    --accent-gold: #FFD700; /* ذهبي نقي - اللون الأساسي للتميز */
+    --accent-secondary-gold: #DAA520; /* ذهبي ثانوي أغمق قليلاً للحدود/التحويم */
+
+    /* الشفافية والظلال */
+    --dark-overlay: rgba(0, 0, 0, 0.85); /* تراكب داكن عام */
+    --footer-bg-opacity: rgba(0, 0, 0, 0.95); /* خلفية الفوتر أغمق قليلاً */
+    --shadow-dark: 0 5px 20px rgba(0, 0, 0, 0.6);
+    --glow-effect: 0 0 15px var(--accent-gold), 0 0 25px var(--accent-gold), 0 0 35px var(--accent-gold);
+    --secondary-glow-effect: 0 0 10px var(--accent-secondary-gold), 0 0 20px var(--accent-secondary-gold);
+
+    /* الانتقالات */
+    --transition-fast: 0.3s ease-in-out;
+    --transition-medium: 0.5s ease-in-out;
+}
+
+
+/* 2. تنسيق الفوتر العام */
+.footer {
+    background-color: var(--footer-bg-opacity); /* خلفية داكنة شبه شفافة */
+    color: var(--text-dark);
+    padding: 60px 0 30px; /* تباعد علوي وسفلي */
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px); /* تأثير زجاجي خفيف */
+    -webkit-backdrop-filter: blur(5px);
+    border-top: 1px solid var(--border-dark); /* خط فاصل علوي خفيف */
+}
+
+/* 3. حاوية الفوتر الرئيسية */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* للسماح بالعناصر بالانتقال إلى سطر جديد في الشاشات الصغيرة */
+    justify-content: space-between;
+    gap: 30px; /* المسافة بين الأعمدة */
+    margin-bottom: 40px;
+}
+
+/* 4. أعمدة الفوتر */
+.footer-column {
+    flex: 1; /* لتوزيع المساحة بالتساوي */
+    min-width: 250px; /* الحد الأدنى لعرض كل عمود */
+}
+
+/* 5. شعار الفوتر */
+.footer-logo {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--accent-gold); /* لون ذهبي للشعار */
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: block;
+    letter-spacing: 1px;
+    transition: color var(--transition-fast);
+}
+
+.footer-logo:hover {
+    color: var(--accent-secondary-gold);
+}
+
+/* 6. نص "من نحن" في الفوتر */
+.footer-about {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: var(--text-dark);
+}
+
+/* 7. روابط التواصل الاجتماعي */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--dark-secondary); /* خلفية دائرية داكنة */
+    color: var(--white-pure);
+    font-size: 1.1rem;
+    transition: background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+    border: 1px solid var(--border-dark);
+}
+
+.social-link:hover {
+    background-color: var(--accent-gold); /* تتغير للذهبي عند التحويم */
+    color: var(--text-light);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* توهج ذهبي خفيف */
+    border-color: var(--accent-gold);
+}
+
+/* 8. عناوين الأعمدة */
+.footer-heading {
+    font-size: 1.5rem;
+    color: var(--white-pure);
+    margin-bottom: 25px;
+    font-weight: 700;
+    position: relative;
+}
+
+.footer-heading::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent-gold); /* خط ذهبي تحت العنوان */
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+/* 9. روابط الفوتر (القوائم) */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link {
+    margin-bottom: 12px;
+}
+
+.footer-link a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color var(--transition-fast);
+}
+
+.footer-link a:hover {
+    color: var(--accent-gold); /* تتحول للذهبي عند التحويم */
+    text-decoration: underline;
+}
+
+/* 10. قسم "تواصل معنا" */
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+.footer-contact-icon {
+    color: var(--accent-gold); /* أيقونات ذهبية */
+    margin-inline-end: 15px; /* مسافة بعد الأيقونة */
+    font-size: 1.2rem;
+}
+
+/* 11. جزء الفوتر السفلي (حقوق النشر) */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--border-dark); /* خط فاصل علوي */
+    padding-top: 25px;
+    margin-top: 25px;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+/* 12. التجاوبية (Media Queries) */
+@media (max-width: 992px) {
+    .footer-column {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* الأعمدة تصبح فوق بعضها */
+        align-items: center; /* توسيط المحتوى */
+        text-align: center;
+        gap: 40px;
+    }
+    .footer-logo {
+        margin-bottom: 15px;
+    }
+    .social-links {
+        justify-content: center; /* توسيط روابط التواصل */
+        margin-bottom: 30px;
+    }
+    .footer-heading::after {
+        margin-left: auto; /* توسيط الخط الذهبي */
+        margin-right: auto;
+    }
+    .footer-contact-item {
+        justify-content: center; /* توسيط أيقونات ومعلومات الاتصال */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 40px 0 20px;
+    }
+    .footer-logo {
+        font-size: 2.2rem;
+    }
+    .footer-heading {
+        font-size: 1.3rem;
+    }
+    .footer-about, .footer-link a, .footer-contact-item span {
+        font-size: 0.9rem;
+    }
+    .footer-bottom p {
+        font-size: 0.85rem;
+    }
+}

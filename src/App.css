@@ -1,0 +1,109 @@
+/* App.css أو global.css */
+
+/*
+   المتغيرات (Variables)
+   --------------------
+   هنا تُعرّف جميع المتغيرات العامة التي ستُستخدم في التطبيق.
+   هذا يضمن أن الألوان، الأحجام، والظلال تكون متناسقة ومتاحة لجميع ملفات الـ CSS الأخرى.
+*/
+:root {
+  /* ألوان الخلفيات والنصوص */
+  --primary-gold: #FFD700; /* ذهبي أساسي ساطع */
+  --dark-background: #1a1a1a; /* خلفية داكنة جداً (تُستخدم كـ dark-primary في Home.css) */
+  --secondary-dark-background: #2c2c2c; /* خلفية داكنة ثانوية (تُستخدم كـ dark-secondary في Home.css) */
+  --tertiary-dark-background: #202020; /* لون أغمق قليلاً من الثانوي يستخدم للعناصر الداخلية مثل الكاردات */
+  --text-light-on-dark: #b0b0b0; /* نص رمادي فاتح على الخلفيات الداكنة */
+  --text-white-pure: #e0e0e0; /* أبيض نقي بدرجة رمادية خفيفة */
+  --text-on-gold: #000000; /* نص داكن على الخلفيات الذهبية */
+  --accent-blue:#2c2c2c; /* أزرق للتمييز */
+
+  /* متغيرات النجوم مع بعض العشوائية */
+  --faded-star-gold-1: rgba(255, 215, 0, 0.12);
+  --faded-star-gold-2: rgba(255, 215, 0, 0.18);
+  --faded-star-blue: rgba(173, 216, 230, 0.08);
+
+  /* الشفافية والظلال */
+  --dark-overlay: rgba(0, 0, 0, 0.85);
+  --light-overlay: rgba(255, 255, 255, 0.1);
+  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+  --shadow-strong: 0 5px 20px rgba(0, 0, 0, 0.6); /* ظل قوي */
+
+  /* تأثيرات التوهج */
+  --gold-glow-effect: 0 0 15px var(--primary-gold), 0 0 25px var(--primary-gold), 0 0 35px var(--primary-gold);
+  --secondary-glow-effect: 0 0 10px #DAA520, 0 0 20px #DAA520; /* ذهبي ثانوي للتوهج الخفيف */
+
+  /* الانتقالات */
+  --transition-speed-fast: 0.3s ease-in-out;
+  --transition-speed-medium: 0.5s ease-in-out;
+  --transition-speed-slow: 1s ease-in-out;
+
+  /* أحجام ومقاسات الشريط العلوي */
+  --header-height: 80px; /* ارتفاع الهيدر الجديد */
+  --logo-font-size: 1.8rem;
+  --nav-link-font-size: 1rem;
+  --menu-toggle-size: 30px; /* حجم زر القائمة (burger icon) */
+}
+
+/*
+   الأنماط الأساسية للجسم والتخطيط العام
+   ------------------------------------
+*/
+body {
+  font-family: 'Arial', sans-serif; /* خط عام للتطبيق */
+  line-height: 1.6;
+  background-color: var(--dark-background); /* خلفية الجسم بالكامل */
+  color: var(--text-light-on-dark); /* لون النص الافتراضي للجسم */
+  margin: 0; /* إزالة الهوامش الافتراضية للجسم */
+  padding: 0; /* إزالة البادينج الافتراضي للجسم */
+  box-sizing: border-box; /* لضمان أن البادينج لا يزيد حجم العناصر */
+  overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي */
+}
+
+/*
+   نمط العنصر <main>
+   ------------------
+   يدفع المحتوى لأسفل ليظهر تحت شريط التنقل الثابت.
+*/
+main {
+  margin-top: var(--header-height); /* يدفع المحتوى لأسفل بعيداً عن الناف بار العلوي الثابت */
+  min-height: calc(100vh - var(--header-height)); /* يضمن أن المحتوى يغطي ما تبقى من الشاشة */
+  box-sizing: border-box;
+  position: relative;
+  background-color: var(--dark-background); /* خلفية المحتوى الرئيسي */
+  color: var(--text-light-on-dark); /* لون النص الافتراضي للمحتوى */
+}
+
+/*
+   الحاوية (Container)
+   -------------------
+   كلاس يُستخدم لتحديد عرض المحتوى وتوسيعه في المنتصف.
+*/
+.container {
+  max-width: 1200px; /* الحد الأقصى لعرض المحتوى - يمكنك تعديل هذه القيمة */
+  margin-left: auto; /* توسيط المحتوى أفقياً */
+  margin-right: auto; /* توسيط المحتوى أفقياً */
+  padding: 0 20px; /* مسافة داخلية من الجوانب للحماية من الالتصاق بالحواف */
+  box-sizing: border-box;
+}
+
+/*
+   أنماط الشبكة (Grid System)
+   -------------------------
+   أنماط عامة للتعامل مع الـ Grid.
+*/
+.grid {
+    display: grid;
+    gap: 30px;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/*
+   أنماط النص العامة
+   -----------------
+*/
+.text-center {
+    text-align: center;
+}
